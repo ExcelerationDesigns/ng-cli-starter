@@ -1,0 +1,20 @@
+<app-header></app-header>
+<nav>
+    <a routerLink="/home" routerLinkActive="active">{{'homePage.title' | translate}}</a>
+    <a routerLink="/about" routerLinkActive="active">{{'aboutPage.title' | translate}}</a>
+</nav>
+<div>
+  <md-list>
+    <md-list-item (click)="toggleLang('en_US')">
+      <img md-list-avatar src="./assets/flags-iso/flat/32/US.png" alt="...">
+      {{'lang.english' | translate}} ({{'lang.unitedStates' | translate}})
+    </md-list-item>
+    <md-list-item (click)="toggleLang('en_GB')">
+      <img md-list-avatar src="./assets/flags-iso/flat/32/GB.png" alt="...">
+      {{'lang.english' | translate}} ({{'lang.unitedKingdom' | translate}})
+    </md-list-item>
+  </md-list>
+</div>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>

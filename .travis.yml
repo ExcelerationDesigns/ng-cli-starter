@@ -1,0 +1,46 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - '6'
+cache:
+  bundler: true
+  directories:
+  - node_modules
+  - $(npm config get prefix)/bin/angular-cli
+
+addons:
+apt:
+  sources:
+    - google-chrome
+  packages:
+    - google-chrome-stable
+    - google-chrome-beta
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+before_script:
+- npm install -g angular-cli
+- npm install -g karma
+- npm install
+- npm run pree2e
+- ng lint
+- ng test --single-run
+- ng serve --prod --aot &
+- sleep 40
+
+script:
+- npm run e2e
+
+after_success:
+- bash deploy.sh true
+
+notifications:
+  email:
+    recipients:
+      - jtbruch103@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
