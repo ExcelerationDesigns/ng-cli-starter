@@ -2,7 +2,7 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
-[![Build Status](https://travis-ci.org/ExcelerationDesigns/ng2-public-site.svg?branch=master)](https://travis-ci.org/ExcelerationDesigns/ng2-public-site)
+[![Build Status](https://travis-ci.org/ExcelerationDesigns/ng-cli-starter.svg?branch=master)](https://travis-ci.org/ExcelerationDesigns/ng-cli-starter)
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
