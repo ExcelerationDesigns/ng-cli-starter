@@ -15,12 +15,13 @@ then
   exit 0
 fi
 
-echo "Detected Angular flag, disabling Angular features"
 if [ "$1" != true ]
 then
+  echo "Detected Angular flag, enabling Angular features"
+
   shopt -s extglob
-  echo "ng build --base-href=\"/ng2-public-site/"
-  ng build --base-href="/ng2-public-site/" --aot --prod
+  echo "ng build --base-href=\"/ng-cli-starter/"
+  ng build --base-href="/ng-cli-starter/" --aot --prod
 fi
 
 echo "set remote"
