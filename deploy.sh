@@ -93,6 +93,13 @@ echo "pushing to repo"
 git push -f
 git log
 
+IN="$TRAVIS_REPO_SLUG"
+set -- "$IN"
+IFS="/"; declare -a Array=($*)
+echo "${Array[@]}"
+echo "${Array[0]}"
+echo "${Array[1]}"
+
 # echo "example.com" > CNAME
 
 
