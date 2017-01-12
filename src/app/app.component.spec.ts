@@ -4,10 +4,12 @@ import { getTestBed, TestBed, async, ComponentFixture } from '@angular/core/test
 import { DebugElement, NO_ERRORS_SCHEMA, Injector } from '@angular/core';
 import { ResponseOptions, Response, XHRBackend, HttpModule, Http } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { SpyLocation } from '@angular/common/testing';
 import { PlatformLocation } from '@angular/common';
 
 import { TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { AngularFireModule } from 'angularfire2';
+import { Angulartics2, Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 import { buildTranslationPathFromHref, createTranslateLoader } from './app.module';
 
@@ -51,14 +53,19 @@ describe('AppComponent', () => {
           provide: TranslateLoader,
           useFactory: (createTranslateLoader)
         }),
-        AngularFireModule
+        AngularFireModule,
+        // Angulartics2Module
+        // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
       ],
       providers: [
         Title,
         {
           provide: XHRBackend,
           useClass: MockBackend
-        }
+        },
+        // Angulartics2,
+        // { provide: Location, useClass: SpyLocation },
+
       ],
       schemas: [
         NO_ERRORS_SCHEMA

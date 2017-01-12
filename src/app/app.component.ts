@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { Angulartics2, Angulartics2GoogleAnalytics } from 'angulartics2';
+// import { Angulartics2, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
@@ -14,8 +14,8 @@ export class AppComponent {
 
   constructor(private titleService: Title,
               private translate: TranslateService,
-              private angulartics2: Angulartics2,
-              private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
+              /* private angulartics2: Angulartics2,
+              private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics */) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en_US');
 
