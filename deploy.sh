@@ -18,10 +18,15 @@ fi
 if [ "$1" != true ]
 then
   echo "Detected Angular flag, enabling Angular features"
-
+  IN="$TRAVIS_REPO_SLUG"
+  set -- "$IN"
+  IFS="/"; declare -a Array=($*)
+  echo "${Array[@]}"
+  echo "${Array[0]}"
+  echo "${Array[1]}"
   shopt -s extglob
-  echo "ng build --base-href=\"/ng-cli-starter/"
-  ng build --base-href="/ng-cli-starter/" --aot --prod
+  echo "ng build --base-href=\"/${Array[1]}/"
+  ng build --base-href="/${Array[1]}/" --aot --prod
 fi
 
 echo "set remote"
@@ -93,12 +98,7 @@ echo "pushing to repo"
 git push -f
 git log
 
-IN="$TRAVIS_REPO_SLUG"
-set -- "$IN"
-IFS="/"; declare -a Array=($*)
-echo "${Array[@]}"
-echo "${Array[0]}"
-echo "${Array[1]}"
+
 
 # echo "example.com" > CNAME
 
