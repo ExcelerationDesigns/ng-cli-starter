@@ -172,7 +172,7 @@ describe('AppComponent', () => {
     });
 
     it('should handle an actual basehref', () => {
-      expect(buildTranslationPathFromHref('/ng2-public-site/')).toBe('/ng2-public-site' + assetPath);
+      expect(buildTranslationPathFromHref('/ng-cli-starter/')).toBe('/ng-cli-starter' + assetPath);
     });
   });
 

@@ -1,6 +1,6 @@
 import { Ng2PublicSitePage } from './app.po';
 
-describe('ng2-public-site App', () => {
+describe('ng-cli-starter App', () => {
   let page: Ng2PublicSitePage;
 
   beforeEach(() => {
