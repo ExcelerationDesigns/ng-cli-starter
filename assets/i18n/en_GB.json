@@ -1,0 +1,17 @@
+{
+    "appTitle": "Exceleration Designs-UK",
+    "lang": {
+        "english": "English-UK",
+        "unitedStates": "United States-UK",
+        "unitedKingdom": "United Kingdom-UK"
+    },
+    "common": {
+
+    },
+    "homePage": {
+        "title": "Home-UK"
+    },
+    "aboutPage": {
+        "title": "About-UK"
+    }
+}
