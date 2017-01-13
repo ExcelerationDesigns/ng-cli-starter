@@ -7,7 +7,7 @@ cache:
   bundler: true
   directories:
   - node_modules
-  - $(npm config get prefix)/bin/angular-cli
+  - $(npm config get prefix)/node_modules/angular-cli
 
 addons:
 apt:

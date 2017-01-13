@@ -2,7 +2,7 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { AuthProviders, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
+import { AuthProviders, AngularFireAuth, FirebaseAuthState } from 'angularfire2';
 
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -30,7 +30,7 @@ describe('Service: AuthGuard', () => {
         ConstService,
         AuthGuardService,
         AuthService,
-        { provide: FirebaseAuth, useValue: mockFirebaseAuth }
+        { provide: AngularFireAuth, useValue: mockFirebaseAuth }
       ]
     });
   });

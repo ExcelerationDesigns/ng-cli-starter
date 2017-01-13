@@ -5,7 +5,11 @@ import { DebugElement, NO_ERRORS_SCHEMA, Injector } from '@angular/core';
 import { ResponseOptions, Response, XHRBackend, HttpModule, Http } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { SpyLocation } from '@angular/common/testing';
-import { PlatformLocation } from '@angular/common';
+import { PlatformLocation, Location } from '@angular/common';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TranslateModule, TranslateService, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { AngularFireModule } from 'angularfire2';
@@ -14,11 +18,12 @@ import { Angulartics2, Angulartics2Module, Angulartics2GoogleAnalytics } from 'a
 import { buildTranslationPathFromHref, createTranslateLoader } from './app.module';
 
 import { AppComponent } from './app.component';
-import { RouterLinkStubDirective, RouterOutletStubComponent } from './testing/router-stubs.spec';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
-import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+
+import { RouterLinkStubDirective, RouterOutletStubComponent, RouterStub, ActivatedRouteStub } from './testing/router-stubs.spec';
 
 const mockBackendResponse = (connection: MockConnection, response: string) => {
   connection.mockRespond(new Response(new ResponseOptions({ body: response })));
@@ -39,10 +44,10 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        SidebarComponent,
+        NotFoundComponent,
         HeaderComponent,
         FooterComponent,
-        NotFoundComponent,
+        SidebarComponent,
         RouterLinkStubDirective,
         RouterOutletStubComponent
       ],
@@ -54,8 +59,9 @@ describe('AppComponent', () => {
           useFactory: (createTranslateLoader)
         }),
         AngularFireModule,
-        // Angulartics2Module
-        // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+        MaterialModule.forRoot(),
+        FlexLayoutModule.forRoot(),
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
       ],
       providers: [
         Title,
@@ -63,9 +69,9 @@ describe('AppComponent', () => {
           provide: XHRBackend,
           useClass: MockBackend
         },
-        // Angulartics2,
-        // { provide: Location, useClass: SpyLocation },
-
+        { provide: Router, useClass: RouterStub },
+        { provide: Location, useClass: SpyLocation },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
       ],
       schemas: [
         NO_ERRORS_SCHEMA
@@ -109,7 +115,7 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', async(() => {
-    let app = fixture.debugElement.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
@@ -152,19 +158,27 @@ describe('AppComponent', () => {
   }));
 
   it('should get RouterLinks from template', () => {
-    expect(links.length).toBe(2, 'should have 2 links');
+    expect(links.length).toBe(5, 'should have 2 links');
+  });
+
+  it('should get / from RouterLinks from template', () => {
+    expect(links[0].linkParams).toBe('/', '1st link should go to /');
   });
 
   it('should get Home from RouterLinks from template', () => {
-    expect(links[0].linkParams).toBe('/home', '1st link should go to Home');
+    expect(links[1].linkParams).toBe('/home', '1st link should go to Home');
+  });
+
+  it('should get About from RouterLinks from template', () => {
+    expect(links[2].linkParams).toBe('/about', '1st link should go to About');
+  });
+
+  it('should get Home from RouterLinks from template', () => {
+    expect(links[3].linkParams).toBe('/home', '1st link should go to Home');
   });
 
   it('should get About from RouterLinks', () => {
-    expect(links[1].linkParams).toBe('/about', '2nd link should go to About');
-  });
-
-  it('should get About from RouterLinks', () => {
-    expect(links[1].linkParams).toBe('/about', '2nd link should go to About');
+    expect(links[4].linkParams).toBe('/about', '2nd link should go to About');
   });
 
   describe('handling baseref paths for asset directory', () => {

@@ -28,5 +28,8 @@ exports.config = {
   },
   onPrepare: function() {
     jasmine.getEnv().addReporter(new SpecReporter());
+    var width = 1280;
+    var height = 1200;
+    browser.driver.manage().window().setSize(width, height);
   }
 };

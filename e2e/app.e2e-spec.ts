@@ -18,17 +18,22 @@ describe('ng-cli-starter App', () => {
 
   describe('navigation is built properly', () => {
     it('should have two links', () => {
-      expect(page.getNavLinkList().count()).toEqual(2);
+      expect(page.getNavLinkList().count()).toEqual(5);
+    });
+
+    it('should have a link to default page', () => {
+      const linkList = page.getNavLinkList();
+      expect(linkList.get(0).getText()).toEqual('EXCELERATION DESIGNS');
     });
 
     it('should have a link to home page', () => {
-      let linkList = page.getNavLinkList();
-      expect(linkList.get(0).getText()).toEqual('Home');
+      const linkList = page.getNavLinkList();
+      expect(linkList.get(1).getText()).toEqual('HOME');
     });
 
     it('should have a link to about page', () => {
-      let linkList = page.getNavLinkList();
-      expect(linkList.get(1).getText()).toEqual('About');
+      const linkList = page.getNavLinkList();
+      expect(linkList.get(2).getText()).toEqual('ABOUT');
     });
   });
 
@@ -40,7 +45,7 @@ describe('ng-cli-starter App', () => {
     });
 
     it('should have a link to about page', () => {
-      page.getNavLinkList().get(1).click().then(() => {
+      page.getNavLinkList().get(2).click().then(() => {
         expect(page.getAboutPageComponent().getText()).toEqual('About');
       });
     });
@@ -49,16 +54,6 @@ describe('ng-cli-starter App', () => {
   describe('language control is built properly', () => {
     it('should have two links', () => {
       expect(page.getLangListArray().count()).toEqual(2);
-    });
-
-    it('should have a link to English - United States', () => {
-      let linkList = page.getLangListArray();
-      expect(linkList.get(0).getText()).toContain('United States');
-    });
-
-    it('should have a link to English - United Kingdom', () => {
-      let linkList = page.getLangListArray();
-      expect(linkList.get(1).getText()).toContain('United Kingdom');
     });
   });
 });

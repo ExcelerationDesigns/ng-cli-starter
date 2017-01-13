@@ -1,1 +1,24 @@
-@import "../../../assets/styles/variables";
+
+
+.mobile-container {
+  height: 45px;
+  border: solid 1px #b6b6b6;
+  opacity: 0.9;
+  color: #fff;
+  text-align: center;
+
+  .test1 {
+    color: white;
+    background-color: #009688;
+  }
+
+  .test2 {
+    color: white;
+    background-color: #3949ab;
+  }
+
+  .test3 {
+    color: white;
+    background-color: #9c27b0;
+  }
+}

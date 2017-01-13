@@ -5,6 +5,8 @@ export { ActivatedRoute, Router, RouterLink, RouterOutlet} from '@angular/router
 
 import { NgModule, Component, Directive, Injectable, Input } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
+import { NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs';
 
 // #docregion router-link
 @Directive({
@@ -29,6 +31,11 @@ export class RouterOutletStubComponent { }
 @Injectable()
 export class RouterStub {
   navigate(commands: any[], extras?: NavigationExtras) { }
+  public ne = new NavigationEnd(0, 'http://localhost:4200', 'http://localhost:4200');
+  public events = new Observable(observer => {
+    observer.next(this.ne);
+    observer.complete();
+  });
 }
 
 

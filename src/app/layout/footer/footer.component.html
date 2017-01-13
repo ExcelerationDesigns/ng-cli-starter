@@ -1,2 +1,13 @@
 <footer>
+  <div class="mobile-container" fxHide="false" fxHide.gt-sm>
+    <div [fxLayout]="row" fxLayoutAlign="center center" fxFill>
+      <div class="test1" fxFill fxFlex>
+        <a md-button routerLink="/home" routerLinkActive="active">{{'homePage.title' | translate}}</a>
+      </div>
+      <div class="test2" fxFill fxFlex>
+        <a md-button routerLink="/about" routerLinkActive="active">{{'aboutPage.title' | translate}}</a>
+      </div>
+    </div>
+  </div>
+
 </footer>

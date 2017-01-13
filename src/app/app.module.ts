@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
@@ -61,7 +62,8 @@ export function createTranslateLoader(http: Http, pl: PlatformLocation) {
       provide: TranslateLoader,
       useFactory: (createTranslateLoader)
     }),
-    MaterialModule,
+    MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot(),
     CoreModule,
     SharedModule,
     AngularFireModule.initializeApp(FireBaseConfig, FirebaseAuthConfig),

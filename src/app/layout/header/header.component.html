@@ -1,3 +1,20 @@
 <header>
-
+  <!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+  <nav class="navbar" fxShow="false" fxShow.gt-sm fxLayout="row">
+    <div fxFlex="80">
+      <a md-button routerLink="/">
+        <span>{{'appTitle' | translate}}</span>
+      </a>
+      <a md-button routerLink="/home" routerLinkActive="active">{{'homePage.title' | translate}}</a>
+      <a md-button routerLink="/about" routerLinkActive="active">{{'aboutPage.title' | translate}}</a>
+    </div>
+    <div class="lang-buttons" fxFlex="20">
+      <a md-button (click)="langClicked('en_GB')">
+        <img class="edi-lang" src="./assets/flags-iso/flat/32/GB.png" alt="Angular">
+      </a>
+      <a md-button (click)="langClicked('en_US')">
+        <img class="edi-lang" src="./assets/flags-iso/flat/32/US.png" alt="Angular">
+      </a>
+    </div>
+  </nav>
 </header>

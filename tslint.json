@@ -11,6 +11,7 @@
           "allowSingleLine": true
       }
     ],
+    "callable-types": true,
     "class-name": true,
     "comment-format": [
       true,
@@ -19,10 +20,13 @@
     "curly": true,
     "eofline": true,
     "forin": true,
+    "import-blacklist": [true, "rxjs"],
+    "import-spacing": true,
     "indent": [
       true,
       "spaces"
     ],
+    "interface-over-type-literal": true,
     "label-position": true,
     "label-undefined": true,
     "max-line-length": [
@@ -52,6 +56,7 @@
     "no-duplicate-key": true,
     "no-duplicate-variable": true,
     "no-empty": false,
+    "no-empty-interface": true,
     "no-extra-semi": true,
     "no-eval": true,
     "no-inferrable-types": [true],
@@ -87,6 +92,7 @@
       true,
       "single"
     ],
+    "prefer-const": true,
     "radix": true,
     "semicolon": [
       "always"
@@ -115,6 +121,8 @@
         "variable-name": [ true, "ban-keywords", "check-format", "allow-leading-underscore" ]
       }
     ],
+    "typeof-compare": true,
+    "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
       true,

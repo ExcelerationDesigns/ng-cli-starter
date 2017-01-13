@@ -5,6 +5,13 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ResponseOptions, Response, XHRBackend, HttpModule, Http } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { SpyLocation } from '@angular/common/testing';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import { PlatformLocation, LocationStrategy } from '@angular/common';
+import { RouterLinkStubDirective, RouterOutletStubComponent, RouterStub, ActivatedRouteStub } from './../../testing/router-stubs.spec';
+
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { createTranslateLoader } from './../../app.module';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateParser } from 'ng2-translate/ng2-translate';
@@ -18,16 +25,19 @@ describe('NotFoundComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        HeaderComponent
+        HeaderComponent,
+        RouterLinkStubDirective
       ],
       imports: [
-        HttpModule,
-        TranslateModule
+        TranslateModule,
+        MaterialModule.forRoot(),
+        FlexLayoutModule.forRoot()
       ],
       providers: [
         TranslateService,
         TranslateLoader,
-        TranslateParser
+        TranslateParser,
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub }
       ],
       schemas: [
         NO_ERRORS_SCHEMA

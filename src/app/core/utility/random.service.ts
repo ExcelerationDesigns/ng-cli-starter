@@ -36,8 +36,8 @@ export class RandomService {
   }
 
   getRandomDate(): Date {
-    let thisYear = new Date().getFullYear();
-    let date: Date | string = this.chanceService.date({ string: false, year: thisYear });
+    const thisYear = new Date().getFullYear();
+    const date: Date | string = this.chanceService.date({ string: false, year: thisYear });
     return new Date(date.toString());
   }
 

@@ -14,11 +14,11 @@ export class Ng2PublicSitePage {
   }
 
   getNavLinkList() {
-    return element.all(by.css('app-root nav a'));
+    return element.all(by.css('app-root app-header nav a'));
   }
 
   getLangListArray() {
-    return element.all(by.css('md-list-item'));
+    return element.all(by.css('app-root app-header nav .lang-buttons a[md-button]'));
   }
 
   getHomePageComponent() {
