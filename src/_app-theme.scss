@@ -2,7 +2,6 @@
 
 @import './styles/typography-theme';
 @import './app/layout/header/header-theme';
-@import './app/layout/footer/footer-theme';
 
 // Styles for the docs app that are based on the current theme.
 @mixin material-docs-app-theme($theme) {
@@ -31,5 +30,4 @@
 
   @include typography-theme($theme);
   @include header-theme($theme);
-  @include footer-theme($theme);
 }
