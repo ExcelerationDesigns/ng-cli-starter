@@ -1,14 +1,24 @@
-<footer>
-  <nav md-tab-nav-bar fxHide="false" fxHide.gt-sm>
+<nav class="navbar navbar-fixed-bottom" fxHide="false" fxHide.gt-sm>
+  <nav md-tab-nav-bar fxFlex>
     <a md-tab-link
       routerLink="/home"
       routerLinkActive fxFlex>
       {{'homePage.title' | translate}}
     </a>
+    <div>
+      <a md-tab-link [mdMenuTriggerFor]="menu" fxFlex>
+        {{'homePage.title' | translate}}
+      </a>
+      <md-menu y-position="above" overlapTripper="true" #menu="mdMenu">
+        <button md-menu-item> {{'homePage.title' | translate}} </button>
+        <button md-menu-item> {{'homePage.title' | translate}} </button>
+        <button md-menu-item> {{'homePage.title' | translate}} </button>
+      </md-menu>
+    </div>
     <a md-tab-link
       routerLink="/about"
       routerLinkActive fxFlex>
       {{'aboutPage.title' | translate}}
     </a>
   </nav>
-</footer>
+</nav>
