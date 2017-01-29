@@ -7,7 +7,7 @@ cache:
   bundler: true
   directories:
   - node_modules
-  - $(npm config get prefix)/node_modules/angular-cli
+  - $(npm config get prefix)
 
 addons:
 apt:
@@ -23,14 +23,13 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-- npm install -g angular-cli
-- npm install -g karma
 - npm install
+- npm run lint
 - npm run pree2e
-- ng lint
-- ng test --single-run
-- ng serve --prod --aot &
-- sleep 40
+- npm run build
+- npm run test
+- npm run http-server &
+- sleep 1
 
 script:
 - npm run e2e
